@@ -9,14 +9,14 @@ ssh_port       = "22"
 document_root  = "~/website.com/"
 rsync_delete   = false
 rsync_args     = ""  # Any extra arguments to pass to rsync
-deploy_default = "rsync"
+deploy_default = "push"
 
 # This will be configured for you when you run config_deploy
 deploy_branch  = "gh-pages"
 
 ## -- Misc Configs -- ##
 
-public_dir      = "public"    # compiled site directory
+public_dir      = "public/railsblogs"    # compiled site directory
 source_dir      = "source"    # source file directory
 blog_index_dir  = 'source'    # directory for your blog's index page (if you put your index in source/blog/index.html, set this to 'source/blog')
 deploy_dir      = "_deploy"   # deploy directory (for Github pages deployment)
@@ -307,8 +307,8 @@ task :setup_github_pages, :repo do |t, args|
     repo_url = args.repo
   else
     puts "Enter the read/write url for your repository"
-    puts "(For example, 'git@github.com:your_username/your_username.github.io.git)"
-    puts "           or 'https://github.com/your_username/your_username.github.io')"
+    puts "(For example, 'git@github.com:RoRTuts/railsblogs.git.github.io.git)"
+    puts "           or 'https://github.com/RoRTuts/railsblogs.git.github.io')"
     repo_url = get_stdin("Repository url: ")
   end
   protocol = (repo_url.match(/(^git)@/).nil?) ? 'https' : 'git'
